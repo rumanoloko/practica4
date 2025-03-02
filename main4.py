@@ -46,6 +46,10 @@ lora.join(activation=LoRa.OTAA, auth=(dev_eui, app_eui, app_key), timeout=0)
 while not lora.has_joined():
     time.sleep(2.5)
     print('⏳ Conectando con red LoRa...')
+    if lora.has_joined():
+        print('✅ Conectado a la red LoRa')
+    else:
+        print('⚠️ Error: No se pudo conectar a la red LoRa. Verifica la configuración y la cobertura de la red.')
 print('✅ Conectado a la red LoRa')
 
 # Crear socket LoRa
@@ -92,7 +96,6 @@ while True:
         if data:
             print("📥 Mensaje recibido:", data)
 
-            # Simular la decodificación del Join Accept Message
             try:
                 join_accept_msg = {
                     "end_device_ids": {
