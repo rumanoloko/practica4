@@ -6,4 +6,4 @@ import sys
 uart = UART(0, baudrate=115200)
 os.dupterm(uart)
 
-machine.main('main3.py')
+machine.main('main.py')
